@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>test_ajax</title>
+
+    <script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+    <script>
+        $(function () {
+            $('#test').click(function () {
+                $.ajax({
+                    url:'test666',
+                    type:'post',
+                    data:{'name':'孙迎光绿了',
+                        'sex':'man',
+                        'csrfmiddlewaretoken':$('[name=csrfmiddlewaretoken]').val()
+                    },
+                    success:function (data) {
+                        $('#syg').html(data)
+                    }
+                })
+            })
+        });
+    </script>
+</head>
+<body>
+    <a id="test">测试</a>
+    <h1 id="syg">孙迎光SB</h1>
+    {% csrf_token %}
+</body>
+</html>
